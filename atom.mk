@@ -13,6 +13,7 @@ LOCAL_AUTOTOOLS_MAKE_INSTALL_ARGS := lib=lib
 
 define LOCAL_AUTOTOOLS_CMD_CONFIGURE
 	cp -r $(PRIVATE_PATH)/*  $(call module-get-build-dir,openssl)/obj
+	rm -f $(call module-get-build-dir,openssl)/obj/atom.mk
 	sh -c "cd $(call module-get-build-dir,openssl)/obj; CC=gcc ./Configure --prefix=/usr --cross-compile-prefix=$(TARGET_CROSS) $(TARGET_ARCH_OPENSSL)"
 endef
 
